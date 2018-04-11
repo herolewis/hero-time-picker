@@ -1,0 +1,163 @@
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .time-picker {
+            width: 100%;
+            position: relative;
+        }
+
+        .time-modal {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 7.7866rem;
+            color: #fff;
+            background-image: radial-gradient(50% 106%, #0D0A34 70%, #070A21 100%);
+        }
+
+        .time-modal .time-top {
+            display: flex;
+            padding-top: 0.5333rem;
+            padding-bottom: 0.3733rem;
+            width: 100%;
+            justify-content: space-between;
+            font-size: 0.3733rem;
+            height: 0.6133rem;
+            line-height: 0.6133rem;
+        }
+
+        .time-modal .time-top span:nth-child(1) {
+            padding-left: 0.4rem;
+        }
+
+        .time-modal .time-top span:nth-child(2) {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 0.32rem;
+            width: 2.1866rem;
+            height: 0.6133rem;
+            line-height: 0.6133rem;
+            border-radius: 1.333rem;
+            position: relative;
+        }
+        .time-modal .time-top span:nth-child(2) i:first-of-type {
+            position: absolute;
+            left: 0.2666rem;
+            font-style: normal;
+        }
+        .time-modal .time-top span:nth-child(2) i:last-of-type {
+            position: absolute;
+            right: 0.2666rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0.226rem;
+            height: 0.24rem;
+            background: url(./images/entry.svg) no-repeat center center;  
+            background-size: cover;
+        }
+        .time-modal .time-top span:nth-child(3) {
+            padding-right: 0.4rem;
+        }
+
+        .time-modal .time-center {
+            width: 100%;
+            height: 1.44rem;
+            text-align: center;
+            font-size: 1.3333rem;
+            color: #FFF;
+            padding-bottom: 0.4933rem;
+        }
+
+        .time-modal .time-center i {
+            font-style: normal;
+            font-size: 1.333rem;
+            display: inline-block;
+            padding-right: 0.1333rem;
+        }
+        .time-modal .time-center b {
+            font-weight: normal;
+            font-size: 0.3733rem;
+            opacity: 0.5;
+            display: inline-block;
+        }
+
+        .time-modal .time-bottom {
+            position: relative;
+            height: 4.333rem;
+        }
+        .time-modal .time-bottom .time-dots {
+            height: 2.3066rem;
+            width: 100%;
+            position: absolute;
+            top: 1.973333rem;
+        }
+        .time-modal .time-bottom .time-dots ul {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            height: 0.01333rem;
+            line-height: 0.0133rem;
+            background: rgba(216, 216, 216, 0.2);
+        }
+        .time-modal .time-bottom .time-dots ul li {
+            width: 0.08rem;
+            height: 0.08rem;
+            line-height: 0.08rem;
+            border-radius: 0.08rem;
+            background-color: #FFF;
+            position: relative;
+        }
+        .time-modal .time-bottom .time-dots ul li span.idots {
+            position: absolute;
+            top: 0rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .time-modal .time-bottom .time-dots ul li span.idots i {
+            font-style: normal;
+            width: 0.0533rem;
+            height: 0.0533rem;
+            line-height: 0.0533rem;
+            background: #232638;
+            display: inline-block;
+        }
+        
+        .time-modal .time-bottom .time-dots ul li>b.current {
+           position: absolute;
+           left:-0.26665rem;
+           top:-0.26665rem;
+           width: 0.5333rem;
+           height: 0.5333rem;
+           border-radius: 0.5333rem;
+           font-weight: normal;
+           background: url(./images/time-flag.svg) no-repeat center center;
+           background-size: cover;
+           z-index: 200;
+        }
+        .time-modal .time-bottom .time-dots ul li> i.idotsb{
+            position: absolute;
+            top: 0.946rem;
+            left: -0.08rem;
+            font-size: 0.373rem;
+            font-style: normal;
+            text-align: center;
+            color: rgba(255, 255, 255,0.3);
+            z-index: -5;
+        }
+        .time-modal .time-bottom .time-dots ul li>i.idotsb.selected {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .time-modal .time-pointer {
+            width: 1.44rem;
+            height: 2.706rem;
+            background: url(./images/time-select-pointer.png) no-repeat center center;
+            margin: 0 4.28rem;
+            position: absolute;
+            bottom: 1.626666rem;
+            z-index: 100;
+            background-size: cover;
+        }

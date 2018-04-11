@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<link rel="stylesheet" href="./normalize.min.css">
+<link rel="stylesheet" href="./timepicker.css">
+</head>
+<style>
+    .btn-ctrl button{
+        width: 2.1866rem;
+        height: 0.6133rem;
+        line-height: 0.6133rem;
+        font-size: 0.32rem;
+    }
+</style>
+<body>
+    <div class="btn-ctrl">
+        <button>显示</button>
+        <button>隐藏</button>
+    </div>
+</body>
+</html>
+<!-- <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="./full.js"></script> -->
+<script src="./flexible.js"></script>
+<script src="./timepicker.js"></script>
+<script>
+    window.onload = function () { 
+        const time = new timePicker({
+            value: 27000000,
+            suggestTime: 7.5*3600000,
+            onOk: function (ele) { 
+                console.log(ele,'当前灌溉时长')
+            }
+        });
+        document.querySelector('.btn-ctrl button:first-child').onclick = function () { time.show() }
+        document.querySelector('.btn-ctrl button:last-child').onclick = function () { time.hide() }
+     }  
+</script>
+

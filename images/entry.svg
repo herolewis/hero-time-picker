@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="17px" height="18px" viewBox="0 0 17 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>智能分析入口</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#00F7FF" offset="0%"></stop>
+            <stop stop-color="#0086FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="视觉" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4调整时间" transform="translate(-420.000000, -806.000000)" fill="url(#linearGradient-1)">
+            <g id="Group-3" transform="translate(0.000000, 752.000000)">
+                <path d="M420,58 L423,58 L423,72 L420,72 L420,58 Z M434,54 L437,54 L437,72 L434,72 L434,54 Z M427,61 L430,61 L430,72 L427,72 L427,61 Z" id="智能分析入口"></path>
+            </g>
+        </g>
+    </g>
+</svg>
