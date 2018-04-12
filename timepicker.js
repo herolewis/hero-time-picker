@@ -99,12 +99,6 @@
     bindEvent: function () { 
         var self = this;
         var curNum;     //当前选择的时长
-        /**
-         * 阻止微信默认的下拉事件
-         */
-        $(document).on("touchstart", function (e) {
-          e.preventDefault();
-        })
         this.$warp
           .width((this.len-1) * this.liWidth)
           .closest(".time-bottom")
