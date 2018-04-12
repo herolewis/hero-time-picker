@@ -104,11 +104,11 @@
           .on('touchmove', function (event) {
             var moveX = event.touches[0].clientX;
             var curMoveX = moveX - self.startX;
-            self.setX(self.curX + self.curWx);
+            self.setX(curMoveX+ self.curWx);
           })
           .on('touchend', function (event) {
               var endX = event.changedTouches[0].clientX;
-              self.curX = endX - self.startX;
+              self.curX = (endX - self.startX) ;
               var currentTime = Number(self.currentTime);
               var int = parseInt(currentTime); //整数部分
               var float = Math.abs(parseInt(currentTime)) === Number(currentTime) ? 0 : Number('0.' + String(currentTime).split('.')[1]); //小数部分

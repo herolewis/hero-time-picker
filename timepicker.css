@@ -112,7 +112,7 @@
         }
         .time-modal .time-bottom .time-dots ul li span.idots {
             position: absolute;
-            top: 0rem;
+            top: -0.018rem;
             display: flex;
             justify-content: space-between;
         }
