@@ -30,8 +30,9 @@
 <script>
     window.onload = function () { 
         var time = new timePicker({
-            value: 27000000,
-            suggestTime: 7.5*3600000,
+            csTime: 27000000,
+            ssTime: 7.5*3600000,
+            link: 'https://www.bilibili.com/',
             onOk: function (ele) { 
                 console.log(ele,'当前灌溉时长')
             }

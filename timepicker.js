@@ -1,8 +1,10 @@
 /**
  * 时间选择组件所需参数
  * @param {Object}          options   对象，必选
-     * @param {number}      value     初始时长，必选
-     * @param {function}    onOk  回调函数，获取灌溉时长
+     * @param {number}      csTime    用户选择时长，必选
+     * @param {number}      ssTime    建议时长，必选
+     * @param {string}      link      智能分析建议入口
+     * @param {function}    onOk      回调函数，获取时长
  * @param {string}          container      Dom节点，可选
 */
 (function () {
@@ -11,7 +13,7 @@
                               <div class="time-modal">\
                                   <div class="time-top">\
                                     <span class="oncancel">取消</span>\
-                                    <span><i>智能分析</i><i></i></span>\
+                                    <span class="openLink"><i>智能分析</i><i></i></span>\
                                     <span class="onsubmit">确定</span>\
                                   </div>\
                                   <div class="time-center">\
@@ -28,7 +30,7 @@
                                   </div>\
                               </div>\
                           </div>';
-         this.$container = (container && $(container)) || $(document.body);
+
          this.len = 25;
          this.i = 0;
          this.htmlStr = '';
@@ -36,9 +38,12 @@
          this.$lis = []; // 所有li
          this.startX = 0; // 初次点击x轴距离
          this.curX = 0; // 当前ul移动距离
-         this.changedTime = options.value; //切换之后灌溉时长
-         this.currentTime = String(options.value / 1000 / 60 / 60) || 4; //当前选择灌溉时长
-         this.suggestTime = String(options.suggestTime/1000/60/60) || 2;   //智熵建议灌溉时长
+
+         this.$container = (container && $(container)) || $(document.body);
+         this.changedTime = options.value; //切换之后时长
+         this.csTime = String(options.csTime / 1000 / 60 / 60) || 4; //当前选择''时长
+         this.ssTime = String(options.ssTime/1000/60/60) || 2;   //智熵建议''时长
+         this.link = options.link || 'javascript:;'; 
          this.onOk = options.onOk || function () {};
          this.curWx = 0;          //页面初始进来的X坐标位置
          this.timer = null;
@@ -53,7 +58,7 @@
   timePicker.prototype = {
     init: function () { 
         this.bindEvent();
-        this.initSuggestTime();
+        this.initSsTime();
         this.initSelectTime();  
     },
     render: function () { 
@@ -85,9 +90,15 @@
     hide: function () {
       this.$warp.closest('.time-picker').hide();
     },
+    openLink: function (addr) {
+      let aNode = document.createElement('a');
+      aNode.href = addr;
+      aNode.click();
+      aNode = null;
+    },
     bindEvent: function () { 
         var self = this;
-        var curNum;     //当前的灌溉时长
+        var curNum;     //当前选择的时长
         /**
          * 阻止微信默认的下拉事件
          */
@@ -109,7 +120,7 @@
           .on('touchend', function (event) {
               var endX = event.changedTouches[0].clientX;
               self.curX = (endX - self.startX) ;
-              var currentTime = Number(self.currentTime);
+              var currentTime = Number(self.csTime);
               var int = parseInt(currentTime); //整数部分
               var float = Math.abs(parseInt(currentTime)) === Number(currentTime) ? 0 : Number('0.' + String(currentTime).split('.')[1]); //小数部分
               var moveLeft = self.liWidth * float;
@@ -148,6 +159,12 @@
           }).on('click', '.oncancel', function () {
              self.hide();
           })
+          this.$warp.closest('.time-modal').on('click',' .openLink',function () { 
+              if(!self.link) {
+                return 
+              }
+              self.openLink(self.link)
+          })
     },
 
     roundNum: function (num) { 
@@ -171,9 +188,9 @@
       }
     },
 
-    //设置智熵用户选择的灌溉的时长
+    //设置用户选择的的时长
     initSelectTime: function () { 
-        var curNum = Number(this.currentTime);
+        var curNum = Number(this.csTime);
         var curWx;
         if (parseInt(curNum) !== curNum) {
           var float = curNum !== 0 ? Number('0.' + String(curNum).split('.')[1]) : 0;
@@ -189,16 +206,16 @@
         }
     },
 
-    //设置智熵建议的灌溉的时长
-    initSuggestTime: function () {
+    //设置建议的的时长
+    initSsTime: function () {
       var self = this;
-      var suggestTime = Number(self.suggestTime);
+      var ssTime = Number(self.ssTime);
       this.$lis.each(function (index, item) {
          $(item).find('span.idots i:first-child,i:last-child').css('background', 'transparent');
-        if (Number($(item).attr('data-index')) === Math.floor(suggestTime)) {
+        if (Number($(item).attr('data-index')) === Math.floor(ssTime)) {
           $(item).find('b').addClass('current');
-          if (parseInt(suggestTime) !== suggestTime) {
-            var float = suggestTime !== 0 ? Number('0.' + String(suggestTime).split('.')[1]) : 0;
+          if (parseInt(ssTime) !== ssTime) {
+            var float = ssTime !== 0 ? Number('0.' + String(ssTime).split('.')[1]) : 0;
             //移动的距离 - 二分之一标志头像的宽度      
             //当前UI设计 1px = 0.0133rem
             var moveLeft = self.liWidth * float - $(item).find('b.current').width()/2;
