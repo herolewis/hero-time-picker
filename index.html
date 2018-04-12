@@ -13,6 +13,8 @@
         height: 0.6133rem;
         line-height: 0.6133rem;
         font-size: 0.32rem;
+        background-image: radial-gradient(50% 106%, #0D0A34 70%, #070A21 100%);
+        color: #FFF;
     }
 </style>
 <body>
@@ -22,22 +24,24 @@
     </div>
 </body>
 </html>
-<!-- <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script> -->
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script src="./full.js"></script> -->
 <script src="./flexible.js"></script>
 <script src="./timepicker.js"></script>
 <script>
     window.onload = function () { 
-        const time = new timePicker({
+        var time = new timePicker({
             value: 27000000,
             suggestTime: 7.5*3600000,
             onOk: function (ele) { 
                 console.log(ele,'当前灌溉时长')
             }
         });
-        document.querySelector('.btn-ctrl button:first-child').onclick = function () { time.show() }
-        document.querySelector('.btn-ctrl button:last-child').onclick = function () { time.hide() }
+        document.querySelector('.btn-ctrl button:first-child').onclick = function () { 
+            time.show() 
+        }
+        document.querySelector('.btn-ctrl button:last-child').onclick = function () { 
+            time.hide() 
+        }
      }  
 </script>
 

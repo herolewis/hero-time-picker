@@ -1,5 +1,6 @@
 ## time-picker组件使用规则(ps：精确到十分钟)
 
+[点击预览](https://herolewis.github.io/TimePicker/)
 * 需要引入js和css文件到使用者的项目中
 <pre>
 var timePicker = new timePicker({
