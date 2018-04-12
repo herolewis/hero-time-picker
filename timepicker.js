@@ -103,6 +103,8 @@
           })
           .on('touchmove', function (event) {
             var moveX = event.touches[0].clientX;
+            var curMoveX = moveX - self.startX;
+            self.setX(self.curX + self.curWx);
           })
           .on('touchend', function (event) {
               var endX = event.changedTouches[0].clientX;
