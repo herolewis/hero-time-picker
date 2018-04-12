@@ -103,20 +103,18 @@
           })
           .on('touchmove', function (event) {
             var moveX = event.touches[0].clientX;
-            var currentTime = Number(self.currentTime);
-            var float = Math.abs(parseInt(currentTime)) === Number(currentTime) ? 0: Number('0.' + String(currentTime).split('.')[1]); //小数部分
-            var moveLeft = self.liWidth * float;
-            /**
-             * 边界值计算 
-             */
-            self.curX = moveX - self.startX;
-            var int = parseInt(currentTime);       //整数部分
-           
-            var limit = self.curX > 0 ? self.curX < self.liWidth * (int +1) - moveLeft : Math.abs(self.curX) < (self.len - int - 1) * self.liWidth + moveLeft;
-  
-            if (limit) {
-              self.setX(self.curX + self.curWx);
-            }else {
+          })
+          .on('touchend', function (event) {
+              var endX = event.changedTouches[0].clientX;
+              self.curX = endX - self.startX;
+              var currentTime = Number(self.currentTime);
+              var int = parseInt(currentTime); //整数部分
+              var float = Math.abs(parseInt(currentTime)) === Number(currentTime) ? 0 : Number('0.' + String(currentTime).split('.')[1]); //小数部分
+              var moveLeft = self.liWidth * float;
+              var limit = self.curX > 0 ? self.curX < self.liWidth * (int +1) - moveLeft : Math.abs(self.curX) < (self.len - int - 1) * self.liWidth + moveLeft;
+              if (limit) {
+                  self.setX(self.curX + self.curWx);
+              }else {
                 if (self.curX > 0) {
                    self.curX = self.liWidth * int + moveLeft ;
                    self.setX(self.liWidth * int + moveLeft + self.curWx);
@@ -124,7 +122,7 @@
                    self.curX = -(self.len - int - 1) * self.liWidth + moveLeft;
                    self.setX(-(self.len - int - 1) * self.liWidth + moveLeft + self.curWx );
                 } 
-            }
+              }
             if (self.curX < 0) {
               curNum = Number(self.curX / self.liWidth) - currentTime;
               curNum = curNum > 24 ? 24 : curNum;
@@ -138,9 +136,6 @@
                     self.$timeLab.html(self.roundNum(curNum));
                 }
              }, 20);
-          })
-          .on('touchend', function (event) {
-
            });
           this.$lis = this.$warp.find('li');
           this.$warp.find('li span.idots').width(this.liWidth);
@@ -205,7 +200,6 @@
             //移动的距离 - 二分之一标志头像的宽度      
             //当前UI设计 1px = 0.0133rem
             var moveLeft = self.liWidth * float - $(item).find('b.current').width()/2;
-            console.log(moveLeft, float, self.liWidth,'===')
              $(item).find('b.current').css({
               'left': moveLeft
             })

@@ -25,3 +25,8 @@ timePicker.hide();                          //隐藏时间modal
 4. 判断一个数是否为小数 `parseInt(num) !== num`
 5. 组件开发之前，先进行可行性分析，定义使用者需要传递的参数以及调用的方法
 6. 尽量使用构造函数的形式进行开发，方便使用者调用
+
+7. linux下启动本地服务   
+
+    1. 上传文件 `scp -P 12345 -r ./* lijiabing@192.168.199.222:~/time-picker/`
+    2. `ssh lijiabing@192.168.199.222 -p 12345` -- `cd time-picker/` -- ` browser-sync start --server --files "*.css,*.html"`
