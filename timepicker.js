@@ -84,6 +84,7 @@
       this.liWidth = this.warpWidth / this.showLen; // 计算每个li的宽度值
       this.$timeLab = $('.time-center span'); // 时间显示位置
       this.init();
+      this.$warp.closest('.time-picker').css('background', 'rgba(0,0,0,0.6)');
     },
     destroy: function () {
       this.$warp.closest('.time-picker').remove();
