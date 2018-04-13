@@ -3,15 +3,20 @@
 [点击预览](https://herolewis.github.io/TimePicker/)
 * 需要引入js和css文件到使用者的项目中
 <pre>
-var timePicker = new timePicker({
-        value: 66600000,               //当前选中时间戳
-        suggestTime: 7800000,          //建议选择时间戳
-        onOk: function (item) {         //确定的回掉函数
-            alert(item,'当前选择时长')
+        var time = new timePicker();
+        var getTime = function (csTime,ssTime) { 
+            time.render({
+                    csTime: csTime,     //当前选中时间戳
+                    ssTime: ssTime,     //建议选择时间戳
+                    link: 'https://www.bilibili.com/',
+                    onOk: function (ele) {           //确定的回掉函数
+                        console.log(ele,'当前灌溉时长')
+                    }
+            },"#timepicker") 
         }
-},'#time-box');
-timePicker.show();                          //显示时间modal
-timePicker.hide();                          //隐藏时间modal
+
+        getTime(27000000, 7.5*3600000)                    //调用组件
+        time.destroy()               //销毁组件
 </pre>
 
 ## 问题点总结
@@ -31,3 +36,5 @@ timePicker.hide();                          //隐藏时间modal
 
     1. 上传文件 `scp -P 12345 -r ./* lijiabing@192.168.199.222:~/time-picker/`
     2. `ssh lijiabing@192.168.199.222 -p 12345` -- `cd time-picker/` -- ` browser-sync start --server --files "*.css,*.html"`
+
+8. 组件复用bug,多次调用时会 新建多次实例，单例模式在这里不适用

@@ -8,7 +8,7 @@
  * @param {string}          container      Dom节点，可选
 */
 (function () {
-  var timePicker = function (options,container) {
+  var timePicker = function () {
          this.template = '<div class="time-picker"> \
                               <div class="time-modal">\
                                   <div class="time-top">\
@@ -32,28 +32,14 @@
                           </div>';
 
          this.len = 25;
-         this.i = 0;
+         this.i=0;
          this.htmlStr = '';
          this.showLen = 6; // 显示时间点的数量
          this.$lis = []; // 所有li
          this.startX = 0; // 初次点击x轴距离
          this.curX = 0; // 当前ul移动距离
-
-         this.$container = (container && $(container)) || $(document.body);
-         this.changedTime = options.value; //切换之后时长
-         this.csTime = String(options.csTime / 1000 / 60 / 60) || 4; //当前选择''时长
-         this.ssTime = String(options.ssTime/1000/60/60) || 2;   //智熵建议''时长
-         this.link = options.link || 'javascript:;'; 
-         this.onOk = options.onOk || function () {};
          this.curWx = 0;          //页面初始进来的X坐标位置
-         this.timer = null;
-         this.render();
-         this.$warp = $('.time-dots ul'); // ul
-         this.warpWidth = this.$warp.width(); // ul宽度值
-         this.liWidth = this.warpWidth / this.showLen; // 计算每个li的宽度值
-         this.$timeLab = $('.time-center span'); // 时间显示位置
-         this.init();
-    
+         this.timer = null;   
   }
   timePicker.prototype = {
     init: function () { 
@@ -61,7 +47,7 @@
         this.initSsTime();
         this.initSelectTime();  
     },
-    render: function () { 
+    renderDOM: function () { 
         $(this.template).appendTo(this.$container);
         while (this.i < this.len) { // 生成24个时间点
           this.htmlStr += '<li data-index="' + this.i + '"><b></b><i class="idotsb">' + this.i++ + '</i>\
@@ -84,11 +70,23 @@
         'transition' : 'all 0.6s linear'
       })
     },
-    show: function () { 
+    render: function (options, container) {
+      this.$container = (container && $(container)) || $(document.body);
+      this.changedTime = options.value; //切换之后时长
+      this.csTime = String(options.csTime / 1000 / 60 / 60) || 4; //当前选择''时长
+      this.ssTime = String(options.ssTime / 1000 / 60 / 60) || 2; //智熵建议''时长
+      this.link = options.link || 'javascript:;';
+      this.onOk = options.onOk || function () {};
+      this.renderDOM();
+      this.$warp = $('.time-dots ul'); // ul
       this.$warp.closest('.time-picker').show();
+      this.warpWidth = this.$warp.width(); // ul宽度值
+      this.liWidth = this.warpWidth / this.showLen; // 计算每个li的宽度值
+      this.$timeLab = $('.time-center span'); // 时间显示位置
+      this.init();
     },
-    hide: function () {
-      this.$warp.closest('.time-picker').hide();
+    destroy: function () {
+      this.$warp.closest('.time-picker').remove();
     },
     openLink: function (addr) {
       let aNode = document.createElement('a');
@@ -149,9 +147,9 @@
           this.$warp.find('li:last-child span.idots').remove();
           this.$warp.closest('.time-modal').on('click', '.onsubmit', function () {
             self.onOk(self.changedTime)
-            self.hide();
+            self.destroy();
           }).on('click', '.oncancel', function () {
-             self.hide();
+             self.destroy();
           })
           this.$warp.closest('.time-modal').on('click',' .openLink',function () { 
               if(!self.link) {

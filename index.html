@@ -21,7 +21,9 @@
     <div class="btn-ctrl">
         <button>显示</button>
         <button>隐藏</button>
+        <button>测试</button>
     </div>
+    <div id="timepicker"></div>
 </body>
 </html>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
@@ -36,20 +38,30 @@ if ('addEventListener' in document) {
 }  
 </script>
 <script>
+    //多例模式
     window.onload = function () { 
-        var time = new timePicker({
-            csTime: 27000000,
-            ssTime: 7.5*3600000,
-            link: 'https://www.bilibili.com/',
-            onOk: function (ele) { 
-                console.log(ele,'当前灌溉时长')
-            }
-        });
-        document.querySelector('.btn-ctrl button:first-child').onclick = function () { 
-            time.show() 
+        var time = new timePicker();
+        var getTime = function (csTime,ssTime) { 
+            time.render({
+                    csTime: csTime,
+                    ssTime: ssTime,
+                    link: 'https://www.bilibili.com/',
+                    onOk: function (ele) {
+                        console.log(ele,'当前灌溉时长')
+                    }
+            },"#timepicker") 
         }
-        document.querySelector('.btn-ctrl button:last-child').onclick = function () { 
-            time.hide() 
+        var button1 =  document.querySelector('.btn-ctrl button:first-child');
+        var button2 =  document.querySelector('.btn-ctrl button:nth-child(2)');
+        var button3 =  document.querySelector('.btn-ctrl button:nth-child(3)');
+        button1.onclick = function () { 
+            getTime(27000000, 7.5*3600000)
+        }
+        button2.onclick = function () { 
+            time.destroy() 
+        }
+        button3.onclick = function () {
+            getTime(27000000, 2.5*3600000)
         }
      }  
 </script>
