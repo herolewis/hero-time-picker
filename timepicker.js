@@ -5,7 +5,7 @@
      * @param {number}      ssTime    建议时长，必选
      * @param {string}      link      智能分析建议入口
      * @param {function}    onOk      回调函数，获取时长
- * @param {string}          container      Dom节点，可选
+ * @param {string}          container      Dom节点，必传
 */
 (function () {
   var timePicker = function () {
@@ -101,16 +101,16 @@
           .width((this.len-1) * this.liWidth)
           .closest(".time-bottom")
           .on('touchstart', function (event) {
-            self.startX = event.touches[0].clientX;
+            self.startX = event.originalEvent.changedTouches[0].clientX;
             self.startX -= self.curX;
           })
           .on('touchmove', function (event) {
-            var moveX = event.touches[0].clientX;
+            var moveX = event.originalEvent.changedTouches[0].clientX;
             var curMoveX = moveX - self.startX;
             self.setX(curMoveX+ self.curWx);
           })
           .on('touchend', function (event) {
-              var endX = event.changedTouches[0].clientX;
+              var endX = event.originalEvent.changedTouches[0].clientX;
               self.curX = (endX - self.startX) ;
               var currentTime = Number(self.csTime);
               var int = parseInt(currentTime); //整数部分
