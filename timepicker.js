@@ -75,7 +75,7 @@
       this.changedTime = options.value; //切换之后时长
       this.csTime = String(options.csTime / 1000 / 60 / 60) || 4; //当前选择''时长
       this.ssTime = String(options.ssTime / 1000 / 60 / 60) || 2; //智熵建议''时长
-      this.link = options.link || 'javascript:;';
+      this.link = options.link;
       this.onOk = options.onOk || function () {};
       this.renderDOM();
       this.$warp = $('.time-dots ul'); // ul
@@ -85,6 +85,9 @@
       this.$timeLab = $('.time-center span'); // 时间显示位置
       this.init();
       this.$warp.closest('.time-picker').css('background', 'rgba(0,0,0,0.6)');
+      if(!options.link) {
+         $('.time-top .openLink').hide();
+      }
     },
     destroy: function () {
       this.$warp.closest('.time-picker').remove();
