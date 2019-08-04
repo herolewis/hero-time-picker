@@ -1,0 +1,136 @@
+<!DOCTYPE html>  
+  
+<html>  
+    <head>  
+        <meta charset='utf-8'>  
+        <title>我爱你,程云</title>
+        <style>
+        html, body {
+            height: 100%;
+            
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: beige;
+        }
+
+        .back-end {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chest {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .heart {
+            position: absolute;
+            z-index: 2;
+            background: linear-gradient(-90deg, #F50A45 0%, #d5093c 40%);
+            animation: beat 0.7s ease 0s infinite normal;
+        }
+
+        .heart.center {
+            background: linear-gradient(-45deg, #B80734 0%, #d5093c 40%);
+        }
+
+        .heart.top {
+            z-index: 3;
+        }
+
+        .side {
+            top: 100px;
+            width: 220px;
+            height: 220px;
+            border-radius: 220px;
+        }
+
+        .center {
+            width: 210px;
+            height: 210px;
+            bottom: 100px;
+            left: 145px;
+            /*transform: rotate(45deg);*/
+        }
+
+        .left {
+            left: 62px;
+        }
+
+        .right {
+            right: 62px;
+        }
+
+
+        @keyframes beat {
+            0% {
+                transform: scale(1) rotate(225deg);
+                box-shadow:0 0 40px #d5093c;
+            }
+
+            50% {
+                transform: scale(1.1) rotate(225deg);
+                box-shadow:0 0 70px #d5093c;
+            }
+
+            100% {
+                transform: scale(1) rotate(225deg);
+                box-shadow:0 0 40px #d5093c;
+            }
+        }
+        #love {
+            position: absolute;
+            z-index: 33;
+            color: #000;
+            text-indent: 2em;
+            margin: 50px;
+            font-size: 40px;
+            font-family: '微软雅黑';
+        }
+    </style>  
+    </head>  
+  
+    <body>  
+        <div id='love'></div> 
+        <div class="back-end">
+            <div class="chest">
+                <div class="heart left side top"></div>
+                <div class="heart center"></div>
+                <div class="heart right side"></div>
+            </div> 
+        </div>
+    
+        <audio src="http://other.web.ra01.sycdn.kuwo.cn/resource/n1/128/23/56/840466109.mp3" 
+        autoplay loop>
+        
+        </audio>
+        <script>  
+            var str = '2012年4月8日这一天，一位美丽的天使降落在我身边，她活波开朗，她善良可爱。她走到哪里，那里就会充满欢声笑语。 而我也就在那时认定她就是我这辈子最爱的人。她是我拿命来爱的女人。我记得我说过为她，我什么苦都愿意吃，只要能让她过得幸福。我们在一起真的很开心，是那种没心没肺的开心。特别具有代表性的就是，当时我们的一场说走就走的旅行。那天我们在你们宿舍人的注视下坐上了去车站。通往帝都的公交车。我们在北京的地铁上，玩剪刀石头布，很二逼的玩了一路。笑声很大，根本没注意身边的人，只沉浸在我们甜蜜的小幸福里。程儿，我们在窑洞广场，曾无数次的幻想过我们未来的生活。 就像在童话故事里。我对你说，我这辈子最大的梦想就是要我心爱的程儿能过上幸福快乐的生活，我对你说，无论走在哪里，我都会是你最坚强的依靠，当你转身，当你需要我的时候我就会在你的身边，我会用全部的爱来让你一直做一个快乐的天使。2016年12月10日。我们就那样快快乐乐的过了四年多。其实，我一直都在你身后，就差你一个回头。每一点记忆都存档在我的脑海中，我对你的爱，真的爱不完。我们曾说我们要一起来南方打拼，不忘初心，方得始终。我们也在一步步向着梦想的方向靠近，你总说我的运气总是那么好，可我觉得我最大的幸运就是遇到了你。因为你才会有我们现在坚持的梦想。你真是一只猪，你还记得，我给你的第一封情书，就说我就是那个傻小子，会一直在前面等你的，我们之间一直都是很坦诚的，我喜欢这样的爱情。虽然这中间发生了很多的事情，但是爱情是需要磨练的。我想说，早上醒来，看到你和阳光都在，是我想要的幸福。我想说，每天当你醒来我给你做好你爱吃的早餐，你慵懒的睁开眼看着，又闭上睡着的时刻，是我想要的幸福。我想说，每天下班回来，我帮你洗洗脚，陪你追你爱看的电视剧，是我想要的幸福。我想说，有你在的每一天，我都充满着力量，努力去让我们过得更好，是我想要的幸福。还记得陪你过得第一个生日，那个阳光瓶是收集爱与欢乐的，我想要所有的爱都降临在你身上。还记得我当时在西安赶回延安只为陪你过一个520，还记得我们一起在西安卖资料，那天天下着雨，我带着你私奔到成都，还记得我们带着所有的美好去到美丽的大理。现在我们要踏上新的征程。让我们一起把我们的快乐延续，我爱你，程儿，我愿意用自己的一生，好好的陪着你，爱着你。陪你到你想去的地方，用心走完我们人生的余下的旅程。无论现在还是将来，我想我这里都会是你最温暖的港湾，都是为你遮风避雨的城墙。无论狂风，无论暴雨。我都会陪在你的身旁，让你不会感到丝毫的担心和惶恐。我会珍惜和你在一起的每一刻，每一分，每一秒。致此生最爱的你';  
+            var i = 0;  
+  
+            function typing(){  
+                var love = document.getElementById('love');  
+                if (i <= str.length) {  
+                    love.innerHTML = str.slice(0, i++) + '_';  
+                    setTimeout('typing()', 150);//递归调用  
+                }  
+                else{  
+                    love.innerHTML = str;//结束打字,移除 _ 光标  
+                }  
+            }  
+  
+            typing();  
+        </script>  
+    </body>  
+</html>
+
